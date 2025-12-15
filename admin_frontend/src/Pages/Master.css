@@ -1,0 +1,24 @@
+.tabs-scroll-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.tabs-scroll-wrapper::-webkit-scrollbar {
+  height: 4px;
+}
+
+.tabs-scroll-wrapper::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.nav-tabs {
+  display: flex;
+  flex-wrap: nowrap !important;
+}
+
+.nav-tabs .nav-item {
+  flex: 0 0 auto;
+}
+

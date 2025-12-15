@@ -1,0 +1,42 @@
+/* Mobile Responsive Fixes */
+@media (max-width: 768px) {
+
+  /* Search bar + buttons */
+  .search-container {
+    flex-direction: column !important;
+    gap: 10px;
+  }
+
+  .search-container input {
+    width: 100% !important;
+    margin-right: 0 !important;
+  }
+
+  .search-container button {
+    width: 100%;
+  }
+
+  /* Table images */
+  .table img {
+    width: 40px !important;
+    height: auto;
+  }
+
+  /* Table text wrapping */
+  table td, table th {
+    white-space: nowrap;
+  }
+
+  /* Pagination center */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .pagination button {
+    width: 40%;
+    margin-bottom: 8px;
+  }
+}
