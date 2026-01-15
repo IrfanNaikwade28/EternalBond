@@ -551,7 +551,7 @@ const calculateAge = (dob) => {
 }
 
 .bg-gradient-purple {
-  background: linear-gradient(135deg, #a6c0fe 0%, #f68084 100%) !important;
+  background: linear-gradient(135deg, #c52e79 0%, #a32561 100%) !important;
 }
 
 .bg-gradient-red {
@@ -621,7 +621,7 @@ const calculateAge = (dob) => {
 
 /* Section Headers */
 .section-header {
-  border-left: 4px solid #d4af37;
+  border-left: 4px solid #c52e79;
   padding-left: 1rem;
 }
 
@@ -666,22 +666,30 @@ const calculateAge = (dob) => {
   }
 }
 
-/* SaaS Dashboard Styling - Custom Scrollbar */
+/* Enhanced Custom Scrollbar with Gradient */
 .offcanvas-body::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 .offcanvas-body::-webkit-scrollbar-track {
-  background: #f1f3f5;
+  background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 10px;
 }
 
 .offcanvas-body::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+  background: linear-gradient(180deg, #c52e79 0%, #a32561 100%);
+  border-radius: 10px;
+  border: 2px solid #f8f9fa;
 }
 
 .offcanvas-body::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: linear-gradient(180deg, #a32561 0%, #c52e79 100%);
+  box-shadow: 0 2px 8px rgba(197, 46, 121, 0.4);
+}
+
+/* Smooth scroll behavior */
+.offcanvas-body {
+  scroll-behavior: smooth;
 }
 
 /* Smooth transitions for data sections */
@@ -700,6 +708,107 @@ const calculateAge = (dob) => {
     position: static !important;
     max-height: none !important;
   }
+}
+
+/* Shimmer loading effect for images */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading-shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(to right, #f0f0f0 8%, #e0e0e0 18%, #f0f0f0 33%);
+  background-size: 1000px 100%;
+}
+
+/* Pulse animation for buttons */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Fade in animation for widgets */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Floating animation for decorative elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Glassmorphism effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced hover effect for cards */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(197, 46, 121, 0.2);
+}
+
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(135deg, #c52e79 0%, #a32561 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Badge pulse effect */
+@keyframes badge-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(197, 46, 121, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(197, 46, 121, 0);
+  }
+}
+
+.badge-pulse {
+  animation: badge-pulse 2s infinite;
 }
     `}
      
@@ -990,30 +1099,46 @@ const calculateAge = (dob) => {
   {/* Premium Header */}
   <div className="offcanvas-header position-relative" style={{ 
     borderRadius: "20px 20px 0 0",
-    //background: "linear-gradient( #764ba2 , #667eea 100%)",
-    backgroundColor:"#c52e79ff",
-    //borderBottom: "3px solid #b8860b",
-    padding: "1rem 1.5rem",
-    minHeight: "80px"
+    background: "linear-gradient(135deg, #c52e79 0%, #a32561 100%)",
+    boxShadow: "0 4px 20px rgba(197, 46, 121, 0.25)",
+    padding: "1.5rem 2rem",
+    minHeight: "90px"
   }}>
     <div className="d-flex align-items-center w-100">
       <div className="flex-grow-1">
         <div className="d-flex align-items-center">
-          <div className="bg-white rounded-circle d-flex align-items-center justify-content-center shadow me-3" 
-               style={{ width: "50px", height: "50px" }}>
-            <i className="fas fa-heart text-danger fs-5"></i>
+          <div className="rounded-circle d-flex align-items-center justify-content-center shadow-lg me-3" 
+               style={{ 
+                 width: "56px", 
+                 height: "56px",
+                 background: "rgba(255, 255, 255, 0.95)",
+                 backdropFilter: "blur(10px)"
+               }}>
+            <i className="fas fa-heart" style={{ color: "#c52e79", fontSize: "1.4rem" }}></i>
           </div>
           <div>
-            <h4 className="offcanvas-title mb-0 fw-bold text-dark">{selectedUser?.Uname}</h4>
-            <div className="d-flex align-items-center gap-2">
-              <span className="badge bg-dark bg-opacity-75 px-2 py-1">
+            <h4 className="offcanvas-title mb-1 fw-bold" style={{ color: "white", letterSpacing: "-0.02em" }}>{selectedUser?.Uname}</h4>
+            <div className="d-flex align-items-center gap-2 flex-wrap">
+              <span className="badge px-3 py-1" style={{ 
+                background: "rgba(255, 255, 255, 0.2)",
+                backdropFilter: "blur(10px)",
+                border: "1px solid rgba(255, 255, 255, 0.3)",
+                color: "white",
+                fontSize: "0.75rem"
+              }}>
                 <i className="fas fa-id-card me-1"></i>
-                User Profile ID: {selectedUser?.UID}
+                ID: {selectedUser?.UID}
               </span>
-              {/* <span className="badge bg-success bg-opacity-90 px-2 py-1">
-                <i className="fas fa-shield-alt me-1"></i>
-                Verified Profile
-              </span> */}
+              <span className="badge px-3 py-1" style={{ 
+                background: "rgba(76, 175, 80, 0.25)",
+                backdropFilter: "blur(10px)",
+                border: "1px solid rgba(76, 175, 80, 0.4)",
+                color: "white",
+                fontSize: "0.75rem"
+              }}>
+                <i className="fas fa-shield-check me-1"></i>
+                Verified
+              </span>
             </div>
           </div>
         </div>
@@ -1030,10 +1155,9 @@ const calculateAge = (dob) => {
       width: "42px",
       height: "42px",
       borderRadius: "50%",
-      //backgroundColor: "rgba(255,255,255,0.15)",
-      backgroundColor:"#c52e79ff",
+      background: "rgba(255, 255, 255, 0.2)",
       backdropFilter: "blur(10px)",
-      border: "1.5px solid #c52e79ff",
+      border: "1.5px solid rgba(255, 255, 255, 0.3)",
       transition: "all 0.3s ease",
       cursor: "pointer",
       display: "flex",
@@ -1042,6 +1166,16 @@ const calculateAge = (dob) => {
       flexShrink: 0,
       color: "white",
       fontSize: "18px"
+    }}
+    onMouseEnter={(e) => {
+      e.target.style.background = "rgba(255, 255, 255, 0.3)";
+      e.target.style.transform = "rotate(90deg) scale(1.1)";
+      e.target.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
+    }}
+    onMouseLeave={(e) => {
+      e.target.style.background = "rgba(255, 255, 255, 0.2)";
+      e.target.style.transform = "rotate(0deg) scale(1)";
+      e.target.style.boxShadow = "none";
     }}
     // onMouseEnter={(e) => {
     //   e.target.style.backgroundColor = "rgba(255,255,255,0.25)";
@@ -1070,14 +1204,19 @@ const calculateAge = (dob) => {
     </div> */}
   </div>
 
-  <div className="offcanvas-body p-0" style={{ overflowY: "auto", background: "#fafafa" }}>
+  <div className="offcanvas-body p-0" style={{ 
+    overflowY: "auto", 
+    background: "linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%)"
+  }}>
     {selectedUser && (
       <>
         {/* ========== COMPACT HEADER (NOT A CARD) ========== */}
         <div style={{ 
-          background: "#ffffff", 
-          borderBottom: "1px solid #e5e7eb", 
-          padding: "14px 20px"
+          background: "rgba(255, 255, 255, 0.9)",
+          backdropFilter: "blur(10px)",
+          borderBottom: "1px solid rgba(197, 46, 121, 0.1)", 
+          padding: "16px 24px",
+          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.05)"
         }}>
           <div className="d-flex align-items-center justify-content-between gap-3">
             <div className="d-flex align-items-center gap-3">
@@ -1095,12 +1234,22 @@ const calculateAge = (dob) => {
                 alt={selectedUser.Uname}
                 onClick={() => setZoomImage(true)}
                 style={{
-                  width: "44px",
-                  height: "44px",
-                  borderRadius: "8px",
+                  width: "50px",
+                  height: "50px",
+                  borderRadius: "12px",
                   objectFit: "cover",
                   cursor: "pointer",
-                  border: "1px solid #e5e7eb"
+                  border: "2px solid rgba(197, 46, 121, 0.3)",
+                  boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+                  transition: "all 0.3s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = "scale(1.05)";
+                  e.target.style.boxShadow = "0 4px 12px rgba(197, 46, 121, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = "scale(1)";
+                  e.target.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.1)";
                 }}
               />
               
@@ -1127,24 +1276,44 @@ const calculateAge = (dob) => {
                 handleLike(selectedUser.UID);
               }}
               style={{
-                background: likedUsers.includes(selectedUser.UID) ? "#c52e79" : "transparent",
-                color: likedUsers.includes(selectedUser.UID) ? "white" : "#71717a",
-                border: `1px solid ${likedUsers.includes(selectedUser.UID) ? "#c52e79" : "#e5e7eb"}`,
-                borderRadius: "6px",
-                padding: "6px 12px",
+                background: likedUsers.includes(selectedUser.UID) 
+                  ? "linear-gradient(135deg, #c52e79 0%, #a32561 100%)"
+                  : "rgba(197, 46, 121, 0.1)",
+                color: likedUsers.includes(selectedUser.UID) ? "white" : "#c52e79",
+                border: `1px solid ${likedUsers.includes(selectedUser.UID) ? "transparent" : "rgba(197, 46, 121, 0.2)"}`,
+                borderRadius: "8px",
+                padding: "8px 16px",
                 fontSize: "13px",
-                fontWeight: 500,
+                fontWeight: 600,
                 cursor: "pointer",
-                transition: "all 0.15s"
+                transition: "all 0.3s ease",
+                boxShadow: likedUsers.includes(selectedUser.UID) ? "0 2px 8px rgba(197, 46, 121, 0.3)" : "none"
+              }}
+              onMouseEnter={(e) => {
+                if (likedUsers.includes(selectedUser.UID)) {
+                  e.target.style.transform = "scale(1.05)";
+                  e.target.style.boxShadow = "0 4px 12px rgba(197, 46, 121, 0.4)";
+                } else {
+                  e.target.style.background = "rgba(197, 46, 121, 0.15)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = "scale(1)";
+                if (likedUsers.includes(selectedUser.UID)) {
+                  e.target.style.boxShadow = "0 2px 8px rgba(197, 46, 121, 0.3)";
+                } else {
+                  e.target.style.background = "rgba(197, 46, 121, 0.1)";
+                }
               }}
             >
-              <i className={`${likedUsers.includes(selectedUser.UID) ? 'fas' : 'far'} fa-heart`}></i>
+              <i className={`${likedUsers.includes(selectedUser.UID) ? 'fas' : 'far'} fa-heart me-1`}></i>
+              {likedUsers.includes(selectedUser.UID) ? 'Liked' : 'Like'}
             </button>
           </div>
         </div>
 
         {/* ========== DASHBOARD GRID (4-2-1) ========== */}
-        <div style={{ padding: "16px" }}>
+        <div style={{ padding: "24px" }}>
           <div style={{ 
             display: "grid", 
             gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))",
@@ -1153,20 +1322,43 @@ const calculateAge = (dob) => {
             
             {/* ========== WIDGET: Basic Overview ========== */}
             <div style={{ 
-              background: "#ffffff", 
-              border: "1px solid #f0f0f0",
-              borderRadius: "8px", 
-              padding: "14px 16px",
-              minHeight: "120px"
+              background: "rgba(255, 255, 255, 0.95)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(197, 46, 121, 0.15)",
+              borderRadius: "12px", 
+              padding: "18px 20px",
+              minHeight: "140px",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.04)",
+              transition: "all 0.3s ease",
+              cursor: "default"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-4px)";
+              e.currentTarget.style.boxShadow = "0 8px 16px rgba(197, 46, 121, 0.15)";
+              e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.3)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.04)";
+              e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.15)";
             }}>
               <div style={{ 
                 fontSize: "11px", 
-                fontWeight: 600, 
-                color: "#a1a1aa", 
+                fontWeight: 700, 
+                color: "#c52e79", 
                 textTransform: "uppercase", 
-                letterSpacing: "0.5px",
-                marginBottom: "10px"
+                letterSpacing: "1px",
+                marginBottom: "12px",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px"
               }}>
+                <div style={{
+                  width: "3px",
+                  height: "14px",
+                  background: "linear-gradient(180deg, #c52e79 0%, #a32561 100%)",
+                  borderRadius: "2px"
+                }}></div>
                 Basic Overview
               </div>
               <div style={{ fontSize: "13px", color: "#27272a", lineHeight: "1.7" }}>
@@ -1179,20 +1371,42 @@ const calculateAge = (dob) => {
 
             {/* ========== WIDGET: Work & Education ========== */}
             <div style={{ 
-              background: "#ffffff", 
-              border: "1px solid #f0f0f0",
-              borderRadius: "8px", 
-              padding: "14px 16px",
-              minHeight: "120px"
+              background: "rgba(255, 255, 255, 0.95)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(197, 46, 121, 0.15)",
+              borderRadius: "12px", 
+              padding: "18px 20px",
+              minHeight: "140px",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.04)",
+              transition: "all 0.3s ease"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-4px)";
+              e.currentTarget.style.boxShadow = "0 8px 16px rgba(197, 46, 121, 0.15)";
+              e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.3)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.04)";
+              e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.15)";
             }}>
               <div style={{ 
                 fontSize: "11px", 
-                fontWeight: 600, 
-                color: "#a1a1aa", 
+                fontWeight: 700, 
+                color: "#c52e79", 
                 textTransform: "uppercase", 
-                letterSpacing: "0.5px",
-                marginBottom: "10px"
+                letterSpacing: "1px",
+                marginBottom: "12px",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px"
               }}>
+                <div style={{
+                  width: "3px",
+                  height: "14px",
+                  background: "linear-gradient(180deg, #c52e79 0%, #a32561 100%)",
+                  borderRadius: "2px"
+                }}></div>
                 Professional
               </div>
               <div style={{ fontSize: "15px", fontWeight: 600, color: "#18181b", letterSpacing: "-0.01em" }}>
@@ -1211,20 +1425,42 @@ const calculateAge = (dob) => {
 
             {/* ========== WIDGET: Religion & Caste ========== */}
             <div style={{ 
-              background: "#ffffff", 
-              border: "1px solid #f0f0f0",
-              borderRadius: "8px", 
-              padding: "14px 16px",
-              minHeight: "120px"
+              background: "rgba(255, 255, 255, 0.95)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(197, 46, 121, 0.15)",
+              borderRadius: "12px", 
+              padding: "18px 20px",
+              minHeight: "140px",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.04)",
+              transition: "all 0.3s ease"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-4px)";
+              e.currentTarget.style.boxShadow = "0 8px 16px rgba(197, 46, 121, 0.15)";
+              e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.3)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.04)";
+              e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.15)";
             }}>
               <div style={{ 
                 fontSize: "11px", 
-                fontWeight: 600, 
-                color: "#a1a1aa", 
+                fontWeight: 700, 
+                color: "#c52e79", 
                 textTransform: "uppercase", 
-                letterSpacing: "0.5px",
-                marginBottom: "10px"
+                letterSpacing: "1px",
+                marginBottom: "12px",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px"
               }}>
+                <div style={{
+                  width: "3px",
+                  height: "14px",
+                  background: "linear-gradient(180deg, #c52e79 0%, #a32561 100%)",
+                  borderRadius: "2px"
+                }}></div>
                 Caste & Astrology
               </div>
               <div style={{ fontSize: "14px", fontWeight: 600, color: "#18181b" }}>
@@ -1240,20 +1476,42 @@ const calculateAge = (dob) => {
 
             {/* ========== WIDGET: Family ========== */}
             <div style={{ 
-              background: "#ffffff", 
-              border: "1px solid #f0f0f0",
-              borderRadius: "8px", 
-              padding: "14px 16px",
-              minHeight: "120px"
+              background: "rgba(255, 255, 255, 0.95)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(197, 46, 121, 0.15)",
+              borderRadius: "12px", 
+              padding: "18px 20px",
+              minHeight: "140px",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.04)",
+              transition: "all 0.3s ease"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-4px)";
+              e.currentTarget.style.boxShadow = "0 8px 16px rgba(197, 46, 121, 0.15)";
+              e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.3)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.04)";
+              e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.15)";
             }}>
               <div style={{ 
                 fontSize: "11px", 
-                fontWeight: 600, 
-                color: "#a1a1aa", 
+                fontWeight: 700, 
+                color: "#c52e79", 
                 textTransform: "uppercase", 
-                letterSpacing: "0.5px",
-                marginBottom: "10px"
+                letterSpacing: "1px",
+                marginBottom: "12px",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px"
               }}>
+                <div style={{
+                  width: "3px",
+                  height: "14px",
+                  background: "linear-gradient(180deg, #c52e79 0%, #a32561 100%)",
+                  borderRadius: "2px"
+                }}></div>
                 Family Background
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
@@ -1278,38 +1536,74 @@ const calculateAge = (dob) => {
 
             {/* ========== WIDGET: Lifestyle ========== */}
             <div style={{ 
-              background: "#ffffff", 
-              border: "1px solid #f0f0f0",
-              borderRadius: "8px", 
-              padding: "14px 16px",
-              minHeight: "120px"
+              background: "rgba(255, 255, 255, 0.95)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(197, 46, 121, 0.15)",
+              borderRadius: "12px", 
+              padding: "18px 20px",
+              minHeight: "140px",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.04)",
+              transition: "all 0.3s ease"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-4px)";
+              e.currentTarget.style.boxShadow = "0 8px 16px rgba(197, 46, 121, 0.15)";
+              e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.3)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.04)";
+              e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.15)";
             }}>
               <div style={{ 
                 fontSize: "11px", 
-                fontWeight: 600, 
-                color: "#a1a1aa", 
+                fontWeight: 700, 
+                color: "#c52e79", 
                 textTransform: "uppercase", 
-                letterSpacing: "0.5px",
-                marginBottom: "10px"
+                letterSpacing: "1px",
+                marginBottom: "12px",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px"
               }}>
+                <div style={{
+                  width: "3px",
+                  height: "14px",
+                  background: "linear-gradient(180deg, #c52e79 0%, #a32561 100%)",
+                  borderRadius: "2px"
+                }}></div>
                 Lifestyle
               </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                 {[
-                  selectedUser.Diet && { text: selectedUser.Diet },
-                  selectedUser.Drink && { text: selectedUser.Drink === "No" || selectedUser.Drink === "no" ? "Non-Drinker" : selectedUser.Drink },
-                  selectedUser.Smoking && { text: selectedUser.Smoking === "No" || selectedUser.Smoking === "no" ? "Non-Smoker" : selectedUser.Smoking },
-                  selectedUser.specs && { text: selectedUser.specs === "Yes" || selectedUser.specs === "yes" ? "Wears Glasses" : "No Glasses" }
+                  selectedUser.Diet && { text: selectedUser.Diet, icon: "utensils" },
+                  selectedUser.Drink && { text: selectedUser.Drink === "No" || selectedUser.Drink === "no" ? "Non-Drinker" : selectedUser.Drink, icon: "glass-water" },
+                  selectedUser.Smoking && { text: selectedUser.Smoking === "No" || selectedUser.Smoking === "no" ? "Non-Smoker" : selectedUser.Smoking, icon: "smoking-ban" },
+                  selectedUser.specs && { text: selectedUser.specs === "Yes" || selectedUser.specs === "yes" ? "Wears Glasses" : "No Glasses", icon: "glasses" }
                 ].filter(Boolean).map((item, idx) => (
                   <div key={idx} style={{
-                    background: "#fafafa",
-                    border: "1px solid #e5e5e5",
-                    borderRadius: "4px",
-                    padding: "5px 11px",
+                    background: "linear-gradient(135deg, rgba(197, 46, 121, 0.08) 0%, rgba(163, 37, 97, 0.08) 100%)",
+                    border: "1px solid rgba(197, 46, 121, 0.2)",
+                    borderRadius: "8px",
+                    padding: "8px 14px",
                     fontSize: "12px",
-                    color: "#52525b",
-                    fontWeight: 500
+                    color: "#c52e79",
+                    fontWeight: 600,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    transition: "all 0.2s ease",
+                    cursor: "default"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "scale(1.05)";
+                    e.currentTarget.style.background = "linear-gradient(135deg, rgba(197, 46, 121, 0.15) 0%, rgba(163, 37, 97, 0.15) 100%)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "scale(1)";
+                    e.currentTarget.style.background = "linear-gradient(135deg, rgba(197, 46, 121, 0.08) 0%, rgba(163, 37, 97, 0.08) 100%)";
                   }}>
+                    <i className={`fas fa-${item.icon}`} style={{ fontSize: "10px" }}></i>
                     {item.text}
                   </div>
                 ))}
@@ -1323,20 +1617,42 @@ const calculateAge = (dob) => {
 
             {/* ========== WIDGET: Astro Details ========== */}
             <div style={{ 
-              background: "#ffffff", 
-              border: "1px solid #f0f0f0",
-              borderRadius: "8px", 
-              padding: "14px 16px",
-              minHeight: "120px"
+              background: "rgba(255, 255, 255, 0.95)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(197, 46, 121, 0.15)",
+              borderRadius: "12px", 
+              padding: "18px 20px",
+              minHeight: "140px",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.04)",
+              transition: "all 0.3s ease"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-4px)";
+              e.currentTarget.style.boxShadow = "0 8px 16px rgba(197, 46, 121, 0.15)";
+              e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.3)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.04)";
+              e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.15)";
             }}>
               <div style={{ 
                 fontSize: "11px", 
-                fontWeight: 600, 
-                color: "#a1a1aa", 
+                fontWeight: 700, 
+                color: "#c52e79", 
                 textTransform: "uppercase", 
-                letterSpacing: "0.5px",
-                marginBottom: "10px"
+                letterSpacing: "1px",
+                marginBottom: "12px",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px"
               }}>
+                <div style={{
+                  width: "3px",
+                  height: "14px",
+                  background: "linear-gradient(180deg, #c52e79 0%, #a32561 100%)",
+                  borderRadius: "2px"
+                }}></div>
                 Additional Details
               </div>
               <div style={{ fontSize: "13px", color: "#52525b", lineHeight: "1.7" }}>
@@ -1350,19 +1666,41 @@ const calculateAge = (dob) => {
             {/* ========== WIDGET: Partner Expectations (FULL WIDTH) ========== */}
             <div style={{ 
               gridColumn: "1 / -1",
-              background: "#ffffff", 
-              border: "1px solid #f0f0f0",
-              borderRadius: "8px", 
-              padding: "14px 16px"
+              background: "rgba(255, 255, 255, 0.95)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(197, 46, 121, 0.15)",
+              borderRadius: "12px", 
+              padding: "18px 20px",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.04)",
+              transition: "all 0.3s ease"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-4px)";
+              e.currentTarget.style.boxShadow = "0 8px 16px rgba(197, 46, 121, 0.15)";
+              e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.3)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.04)";
+              e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.15)";
             }}>
               <div style={{ 
                 fontSize: "11px", 
-                fontWeight: 600, 
-                color: "#a1a1aa", 
+                fontWeight: 700, 
+                color: "#c52e79", 
                 textTransform: "uppercase", 
-                letterSpacing: "0.5px",
-                marginBottom: "10px"
+                letterSpacing: "1px",
+                marginBottom: "12px",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px"
               }}>
+                <div style={{
+                  width: "3px",
+                  height: "14px",
+                  background: "linear-gradient(180deg, #c52e79 0%, #a32561 100%)",
+                  borderRadius: "2px"
+                }}></div>
                 Partner Preferences
               </div>
               <p style={{ fontSize: "13px", color: "#52525b", lineHeight: "1.8", margin: 0 }}>
@@ -1373,76 +1711,142 @@ const calculateAge = (dob) => {
             {/* ========== WIDGET: Contact Information (FULL WIDTH) ========== */}
             <div style={{ 
               gridColumn: "1 / -1",
-              background: "#ffffff", 
-              border: "1px solid #f0f0f0",
-              borderRadius: "8px", 
-              padding: "14px 16px"
+              background: "rgba(255, 255, 255, 0.95)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(197, 46, 121, 0.15)",
+              borderRadius: "12px", 
+              padding: "18px 20px",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.04)",
+              transition: "all 0.3s ease"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-4px)";
+              e.currentTarget.style.boxShadow = "0 8px 16px rgba(197, 46, 121, 0.15)";
+              e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.3)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.04)";
+              e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.15)";
             }}>
               <div style={{ 
                 fontSize: "11px", 
-                fontWeight: 600, 
-                color: "#a1a1aa", 
+                fontWeight: 700, 
+                color: "#c52e79", 
                 textTransform: "uppercase", 
-                letterSpacing: "0.5px",
-                marginBottom: "12px"
+                letterSpacing: "1px",
+                marginBottom: "14px",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px"
               }}>
+                <div style={{
+                  width: "3px",
+                  height: "14px",
+                  background: "linear-gradient(180deg, #c52e79 0%, #a32561 100%)",
+                  borderRadius: "2px"
+                }}></div>
                 Contact Details
               </div>
               
               {!isUnlocked ? (
                 <div style={{
-                  background: "#fefce8",
-                  border: "1px solid #fde68a",
-                  borderRadius: "6px",
-                  padding: "16px",
+                  background: "linear-gradient(135deg, rgba(197, 46, 121, 0.08) 0%, rgba(163, 37, 97, 0.08) 100%)",
+                  border: "1px solid rgba(197, 46, 121, 0.2)",
+                  borderRadius: "12px",
+                  padding: "20px",
                   textAlign: "center"
                 }}>
-                  <div style={{ fontSize: "13px", color: "#78716c", marginBottom: "12px", lineHeight: "1.6" }}>
+                  <div style={{ fontSize: "13px", color: "#52525b", marginBottom: "14px", lineHeight: "1.6", fontWeight: 500 }}>
                     स्थळाचा मोबाईल नंबर पाहण्यासाठी खालील बटन वर क्लिक करा
                   </div>
                   <button
                     onClick={() => handleViewContact(selectedUser.UID)}
                     disabled={loadingContactMap[selectedUser.UID]}
                     style={{
-                      background: "#c52e79",
+                      background: "linear-gradient(135deg, #c52e79 0%, #a32561 100%)",
                       color: "white",
                       border: "none",
-                      borderRadius: "6px",
-                      padding: "9px 22px",
-                      fontSize: "13px",
+                      borderRadius: "10px",
+                      padding: "12px 28px",
+                      fontSize: "14px",
                       fontWeight: 600,
                       cursor: loadingContactMap[selectedUser.UID] ? "not-allowed" : "pointer",
-                      opacity: loadingContactMap[selectedUser.UID] ? 0.6 : 1
+                      opacity: loadingContactMap[selectedUser.UID] ? 0.6 : 1,
+                      boxShadow: "0 4px 12px rgba(197, 46, 121, 0.3)",
+                      transition: "all 0.3s ease",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "8px"
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!loadingContactMap[selectedUser.UID]) {
+                        e.target.style.transform = "translateY(-2px)";
+                        e.target.style.boxShadow = "0 6px 16px rgba(197, 46, 121, 0.4)";
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.transform = "translateY(0)";
+                      e.target.style.boxShadow = "0 4px 12px rgba(197, 46, 121, 0.3)";
                     }}
                   >
+                    <i className="fas fa-unlock" style={{ fontSize: "14px" }}></i>
                     {loadingContactMap[selectedUser.UID] ? "Unlocking..." : "View Contact Details"}
                   </button>
                 </div>
               ) : (
                 <div style={{ 
                   display: "grid", 
-                  gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", 
-                  gap: "12px" 
+                  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", 
+                  gap: "14px" 
                 }}>
                   {[
-                    { label: "Mobile", key: "Umobile" },
-                    { label: "WhatsApp", key: "whatsappno" },
-                    { label: "Alt Mobile", key: "alt_mobile" },
-                    { label: "Address", key: "address" },
-                    { label: "Property", key: "property_details" },
-                    { label: "Other Details", key: "other_details" }
+                    { label: "Mobile", key: "Umobile", icon: "phone" },
+                    { label: "WhatsApp", key: "whatsappno", icon: "whatsapp" },
+                    { label: "Alt Mobile", key: "alt_mobile", icon: "mobile-alt" },
+                    { label: "Address", key: "address", icon: "map-marker-alt" },
+                    { label: "Property", key: "property_details", icon: "home" },
+                    { label: "Other Details", key: "other_details", icon: "info-circle" }
                   ].map((item, idx) => (
                     <div key={idx} style={{
-                      background: "#fafafa",
-                      border: "1px solid #e5e5e5",
-                      borderRadius: "6px",
-                      padding: "12px 14px"
+                      background: "linear-gradient(135deg, rgba(197, 46, 121, 0.05) 0%, rgba(163, 37, 97, 0.05) 100%)",
+                      border: "1px solid rgba(197, 46, 121, 0.15)",
+                      borderRadius: "10px",
+                      padding: "14px 16px",
+                      transition: "all 0.2s ease"
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "translateY(-2px)";
+                      e.currentTarget.style.boxShadow = "0 4px 12px rgba(197, 46, 121, 0.15)";
+                      e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.3)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.boxShadow = "none";
+                      e.currentTarget.style.borderColor = "rgba(197, 46, 121, 0.15)";
                     }}>
-                      <div style={{ fontSize: "10px", color: "#a1a1aa", marginBottom: "6px", textTransform: "uppercase", letterSpacing: "0.5px", fontWeight: 600 }}>
+                      <div style={{ 
+                        fontSize: "10px", 
+                        color: "#c52e79", 
+                        marginBottom: "8px", 
+                        textTransform: "uppercase", 
+                        letterSpacing: "0.8px", 
+                        fontWeight: 700,
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "6px"
+                      }}>
+                        <i className={`fas fa-${item.icon}`} style={{ fontSize: "10px" }}></i>
                         {item.label}
                       </div>
-                      <div style={{ fontSize: "13px", color: "#27272a", fontWeight: 500, wordBreak: "break-word", lineHeight: "1.5" }}>
-                        {selectedUser[item.key] || "Not provided"}
+                      <div style={{ 
+                        fontSize: "13px", 
+                        color: "#18181b", 
+                        fontWeight: 600, 
+                        wordBreak: "break-word", 
+                        lineHeight: "1.5" 
+                      }}>
+                        {selectedUser[item.key] || <span style={{ color: "#a1a1aa", fontWeight: 400 }}>Not provided</span>}
                       </div>
                     </div>
                   ))}
