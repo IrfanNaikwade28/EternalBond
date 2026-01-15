@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { adminApi } from "../lib/api";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -53,7 +54,7 @@ const Register = () => {
         if (files[key]) data.append(key, files[key]);
       });
 
-      const res = await axios.post("http://localhost:5000/api/users", data, {
+      const res = await adminApi.post("/api/users", data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 

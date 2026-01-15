@@ -28,11 +28,11 @@ const storedUser = localStorage.getItem("user");
 
   // Fetch education list & countries
   useEffect(() => {
-    axios.get("http://localhost:5000/api/education/all")
+    axios.get(`${import.meta.env.VITE_ADMIN_API_BASE_URL || "http://localhost:5000"}/api/education/all`)
       .then(res => setEducationList(res.data))
       .catch(err => console.error(err));
 
-    axios.get("http://localhost:5000/api/location/countries")
+    axios.get(`${import.meta.env.VITE_ADMIN_API_BASE_URL || "http://localhost:5000"}/api/location/countries`)
       .then(res => setCountries(res.data))
       .catch(err => console.error(err));
   }, []);
@@ -40,7 +40,7 @@ const storedUser = localStorage.getItem("user");
   // Fetch user's existing education/work info
   useEffect(() => {
     if (!userId) return;
-    axios.get(`http://localhost:5000/api/education-work/${userId}`)
+    axios.get(`${import.meta.env.VITE_ADMIN_API_BASE_URL || "http://localhost:5000"}/api/education-work/${userId}`)
       .then(res => {
         const data = res.data.data;
         console.log("all data of id"+data)
@@ -59,11 +59,11 @@ const storedUser = localStorage.getItem("user");
 
         // Load states & districts for dropdowns
         if (data.CNID) {
-          axios.get(`http://localhost:5000/api/location/states/${data.CNID}`)
+          axios.get(`${import.meta.env.VITE_ADMIN_API_BASE_URL || "http://localhost:5000"}/api/location/states/${data.CNID}`)
             .then(res => setStates(res.data));
         }
         if (data.STID) {
-          axios.get(`http://localhost:5000/api/location/districts/${data.STID}`)
+          axios.get(`${import.meta.env.VITE_ADMIN_API_BASE_URL || "http://localhost:5000"}/api/location/districts/${data.STID}`)
             .then(res => setDistricts(res.data));
         }
       })
@@ -76,12 +76,12 @@ const storedUser = localStorage.getItem("user");
     setFormData(prev => ({ ...prev, [name]: value }));
 
     if (name === "CNID") {
-      axios.get(`http://localhost:5000/api/location/states/${value}`)
+      axios.get(`${import.meta.env.VITE_ADMIN_API_BASE_URL || "http://localhost:5000"}/api/location/states/${value}`)
         .then(res => setStates(res.data));
       setDistricts([]);
     }
     if (name === "STID") {
-      axios.get(`http://localhost:5000/api/location/districts/${value}`)
+      axios.get(`${import.meta.env.VITE_ADMIN_API_BASE_URL || "http://localhost:5000"}/api/location/districts/${value}`)
         .then(res => setDistricts(res.data));
     }
   };
@@ -91,7 +91,7 @@ const storedUser = localStorage.getItem("user");
     const payload = { ...formData, UID: userId };
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/education-work/${editId}`,
+        `${import.meta.env.VITE_ADMIN_API_BASE_URL || "http://localhost:5000"}/api/education-work/${editId}`,
         payload
       );
       setMessage(res.data.message || "Education Work Info Updated successfully!");

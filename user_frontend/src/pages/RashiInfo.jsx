@@ -13,13 +13,13 @@ const RashiInfo = () => {
   const [form, setForm] = useState({});
   const [message, setMessage] = useState("");
 
-  const API_URL = "http://localhost:5000/api/otherinfo";
+  const API_URL = `${import.meta.env.VITE_ADMIN_API_BASE_URL || "http://localhost:5000"}/api/otherinfo`;
 
   // Load dropdown data
   useEffect(() => {
-    axios.get("http://localhost:5000/api/rashi/all").then((res) => setRashis(res.data));
-    axios.get("http://localhost:5000/api/nakshtra/all").then((res) => setNakshtras(res.data));
-    axios.get("http://localhost:5000/api/nadi").then((res) => setNadis(res.data));
+    axios.get(`${import.meta.env.VITE_ADMIN_API_BASE_URL || "http://localhost:5000"}/api/rashi/all`).then((res) => setRashis(res.data));
+    axios.get(`${import.meta.env.VITE_ADMIN_API_BASE_URL || "http://localhost:5000"}/api/nakshtra/all`).then((res) => setNakshtras(res.data));
+    axios.get(`${import.meta.env.VITE_ADMIN_API_BASE_URL || "http://localhost:5000"}/api/nadi`).then((res) => setNadis(res.data));
   }, []);
 
   // Fetch record by userId

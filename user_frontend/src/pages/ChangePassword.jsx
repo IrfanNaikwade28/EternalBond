@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { userApi } from "../lib/api";
 
 const ChangePassword = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ const storedUser = localStorage.getItem("user");
     e.preventDefault();
 
     //const userId = localStorage.getItem("user");
-    console.log("for chnager pASSWORD login id",userId)
+    console.log("for changer password login id",userId)
 
     if (!userId) {
       setMessage({ type: "danger", text: "User not logged in!" });
@@ -35,7 +36,7 @@ const storedUser = localStorage.getItem("user");
     }
 
     try {
-      const response = await axios.post("http://localhost:5001/api/changePassword", {
+      const response = await userApi.post("/api/changePassword", {
         userId,
         oldPassword: formData.oldPassword,
         newPassword: formData.newPassword,

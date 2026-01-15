@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import { userApi, asset } from "../lib/api";
 import { Offcanvas } from "react-bootstrap";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle"; // optional for module init
 
@@ -31,8 +32,8 @@ const WishList = () => {
     const fetchLikedProfiles = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(
-          `http://localhost:5001/api/liked-profiles/${loginUID}`
+        const response = await userApi.get(
+          `/api/liked-profiles/${loginUID}`
         );
         
         if (response.data.data && Array.isArray(response.data.data)) {
@@ -56,7 +57,7 @@ const WishList = () => {
   // Handle unlike a profile
   const handleUnlike = async (profile_uid) => {
     try {
-      const response = await fetch("http://localhost:5001/api/toggle-like", {
+      const response = await fetch(`${userApi.defaults.baseURL}/api/toggle-like`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -87,8 +88,8 @@ const WishList = () => {
     setLoadingContactMap(prev => ({ ...prev, [uid]: true }));
 
     try {
-      const response = await axios.post(
-        "http://localhost:5001/api/incrementViewCount",
+      const response = await userApi.post(
+        "/api/incrementViewCount",
         { 
           loginUserUID: loginUID, 
           selectedUserUID: uid 
@@ -656,7 +657,7 @@ const WishList = () => {
                     }}>
                       {u.uprofile ? (
                         <img
-                          src={`http://localhost:5000/uploads/photos/${u.uprofile}`}
+                          src={asset(`photos/${u.uprofile}`)}
                           alt={u.Uname || 'User Profile'}
                           className="card-img-top h-100 w-100 object-fit-cover rounded-3 shadow-sm"
                           style={{ transition: 'transform 0.3s ease' }}
@@ -949,7 +950,7 @@ const WishList = () => {
                             <div className="position-relative">
                               <div className="profile-image-container">
                                 <img
-                                  src={selectedUser.uprofile ? `http://localhost:5000/uploads/photos/${selectedUser.uprofile}` : (selectedUser.Gender && selectedUser.Gender.toLowerCase() === 'female' ? 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80' : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80')}
+                                  src={selectedUser.uprofile ? asset(`photos/${selectedUser.uprofile}`) : (selectedUser.Gender && selectedUser.Gender.toLowerCase() === 'female' ? 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80' : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80')}
                                   alt={selectedUser.Uname}
                                   className="w-100"
                                   style={{
@@ -1300,7 +1301,7 @@ const WishList = () => {
 
                 {/* IMAGE */}
                 <img
-                  src={selectedUser?.uprofile ? `http://localhost:5000/uploads/photos/${selectedUser.uprofile}` : (selectedUser?.Gender && selectedUser.Gender.toLowerCase() === 'female' ? 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80' : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80')}
+                  src={selectedUser?.uprofile ? asset(`photos/${selectedUser.uprofile}`) : (selectedUser?.Gender && selectedUser.Gender.toLowerCase() === 'female' ? 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80' : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80')}
                   alt="Zoom"
                   onClick={(e) => e.stopPropagation()}
                   style={{

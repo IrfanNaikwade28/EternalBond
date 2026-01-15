@@ -38,6 +38,9 @@ function Navbar1() {
     background: "linear-gradient(135deg, #fff 0%, #fff9fb 100%)",
     boxShadow: "0 4px 20px rgba(214, 51, 132, 0.1)",
     borderBottom: "2px solid rgba(214, 51, 132, 0.1)",
+    position: "sticky",
+    top: 0,
+    zIndex: 1030, // ensure navbar is above loaders/spinners/backdrops
   };
 
   return (
@@ -128,7 +131,7 @@ function Navbar1() {
           </ul>
 
           {/* Login Button */}
-          <div className="ms-lg-4 mt-3 mt-lg-0 w-100 w-lg-auto">
+          <div className="ms-lg-4 mt-3 mt-lg-0 w-sm-100 w-lg-auto">
             <Link
               to="/login"
               className="btn px-4 py-2 w-100 w-lg-auto"

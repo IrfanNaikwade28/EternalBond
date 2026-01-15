@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../context/UserContext";
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = `${import.meta.env.VITE_ADMIN_API_BASE_URL || "http://localhost:5000"}/api`;
 const alphaOnly = /^[A-Za-z\s]+$/;
 
 export default function AddFamilyInfo() {

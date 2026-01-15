@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { adminApi, asset } from "../lib/api";
 
 const UserBasicInfo = () => {
   const storedUser = localStorage.getItem("user");
@@ -34,24 +35,24 @@ const UserBasicInfo = () => {
   useEffect(() => {
     if (!uid) return;
 
-    axios
-      .get(`http://localhost:5000/api/users/${uid}`)
+    adminApi
+      .get(`/api/users/${uid}`)
       .then((res) => {
-        const data = res.data;
-        console.log("data="+data.urole)
+        const data = res.data || {};
+        console.log("data=" + (data.urole || ""));
         setForm({
-          txtuser: data.Uname,
-          txtmobile: data.Umobile,
-          txtaltno: data.alt_mobile,
-          txtwhatsapp: data.whatsappno,
-          txtemail: data.Email,
-          txtgender: data.Gender,
-          txtaddress: data.address,
-          upass: data.upass,
-          role: data.urole,
-          uprofile: data.uprofile,
-          aadhar_front_photo: data.aadhar_front_photo,
-          aadhar_back_photo: data.aadhar_back_photo,
+          txtuser: data.Uname || "",
+          txtmobile: data.Umobile || "",
+          txtaltno: data.alt_mobile || "",
+          txtwhatsapp: data.whatsappno || "",
+          txtemail: data.Email || "",
+          txtgender: data.Gender || "",
+          txtaddress: data.address || "",
+          upass: data.upass || "",
+          role: data.urole || "user",
+          uprofile: data.uprofile || "",
+          aadhar_front_photo: data.aadhar_front_photo || "",
+          aadhar_back_photo: data.aadhar_back_photo || "",
         });
       })
       .catch((err) => console.error("Fetch error:", err));
@@ -86,8 +87,8 @@ const UserBasicInfo = () => {
       fd.append("aadhar_back_photo", files.aadhar_back_photo);
 
     try {
-      const res = await axios.put(
-        `http://localhost:5000/api/users/${uid}`,
+      const res = await adminApi.put(
+        `/api/users/${uid}`,
         fd,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -247,7 +248,7 @@ const UserBasicInfo = () => {
         </div>
         {form.uprofile && (
           <img
-            src={`http://localhost:5000/uploads/photos/${form.uprofile}`}
+            src={asset(`photos/${form.uprofile}`)}
             width="100"
             className="mt-2 rounded border"
           />
@@ -270,7 +271,7 @@ const UserBasicInfo = () => {
         </div>
         {form.aadhar_front_photo && (
           <img
-            src={`http://localhost:5000/uploads/aadhar/${form.aadhar_front_photo}`}
+            src={asset(`aadhar/${form.aadhar_front_photo}`)}
             width="110"
             className="mt-2 rounded border"
           />
@@ -293,7 +294,7 @@ const UserBasicInfo = () => {
         </div>
         {form.aadhar_back_photo && (
           <img
-            src={`http://localhost:5000/uploads/aadhar/${form.aadhar_back_photo}`}
+            src={asset(`aadhar/${form.aadhar_back_photo}`)}
             width="110"
             className="mt-2 rounded border"
           />

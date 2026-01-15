@@ -39,7 +39,7 @@ function App() {
        <Route index element={<Dashboard />} />
       <Route path="profile"  element={<Profile />} />
       <Route path="profileupdate"  element={<ProfileUpdate />} />
-      <Route path="chnagePassword"  element={<ChangePassword />} />
+      <Route path="changepassword"  element={<ChangePassword />} />
         <Route path="wishList"  element={<WishList />} />
        {/* Fallback */}
       <Route path="*" element={<Navigate to="/" />} />

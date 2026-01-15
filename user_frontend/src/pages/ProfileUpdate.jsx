@@ -46,7 +46,7 @@ const ProfileUpdate = () => {
   </div>
 </div>
 
-<style jsx>{`
+<style>{`
   .purple-tabs .nav-tabs {
     border-bottom: 2px solid #e9ecef;
   }

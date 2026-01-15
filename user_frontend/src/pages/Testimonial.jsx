@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { asset } from "../lib/api";
 
 export default function Testimonial() {
   const [testimonials, setTestimonials] = useState([]);
@@ -8,7 +9,7 @@ export default function Testimonial() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:5001/api/testimonials")
+    fetch(`${import.meta.env.VITE_USER_API_BASE_URL || "http://localhost:5001"}/api/testimonials`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -69,7 +70,7 @@ export default function Testimonial() {
             flexShrink: 0
           }}>
             <img
-              src={`http://localhost:5000/uploads/testimonial/${t.simg}`}
+              src={asset(`/testimonial/${t.simg}`)}
               alt={t.Name}
               style={{
                 width: "100%",

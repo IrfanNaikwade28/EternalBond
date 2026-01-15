@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { asset } from "../lib/api";
 
 export default function SuccessStories() {
   const [stories, setStories] = useState([]);
@@ -11,7 +12,7 @@ export default function SuccessStories() {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get("http://localhost:5001/api/success-stories/")
+      .get(`${import.meta.env.VITE_USER_API_BASE_URL || "http://localhost:5001"}/api/success-stories/`)
       .then((res) => {
         setStories(res.data.stories || []);
         setError(null);
@@ -193,7 +194,7 @@ export default function SuccessStories() {
                     height: "300px"
                   }}>
                     <img
-                      src={`http://localhost:5000/uploads/story/${s.image}`}
+                      src={asset(`/story/${s.image}`)}
                       alt={s.name || "Happy Couple"}
                       style={{
                         width: "100%",

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { userApi } from "../lib/api";
 
 const Profile = () => {
   const [loginUser, setLoginUser] = useState(null);
@@ -21,7 +22,7 @@ const Profile = () => {
 
   const fetchUserProfile = async (UID) => {
     try {
-      const res = await axios.get(`http://localhost:5001/api/profile?UID=${UID}`);
+      const res = await userApi.get(`/api/profile?UID=${UID}`);
       setUserData(res.data);
     } catch (err) {
       console.error("Error fetching profile:", err);

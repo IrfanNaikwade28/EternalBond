@@ -41,7 +41,7 @@ const [applyingFilter, setApplyingFilter] = useState(false);
     marriage_type: ""
   });
     const fetchData = async () => {
-      const baseURL = "http://localhost:5001/api/filter";
+      const baseURL = `${import.meta.env.VITE_USER_API_BASE_URL || "http://localhost:5001"}/api/filter`;
       try {
         const results = await Promise.allSettled([
           axios.get(`${baseURL}/income`),

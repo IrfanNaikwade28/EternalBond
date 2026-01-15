@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { userApi } from "../lib/api";
 import { useNavigate,Link } from "react-router-dom";
 //import { useNavigate, Link } from "react-router-dom"; // <-- Import Link
 //import { useUser } from "../context/UserContext.jsx"; // Import your context hook
@@ -22,7 +23,7 @@ const Login = ({ setUser }) => {
         upass: formData.upass.trim(),
       };
 console.log("data sending",payload)
-      const res = await axios.post("http://localhost:5001/api/auth/login", payload);
+      const res = await userApi.post("/api/auth/login", payload);
 
       if (res.data.user && res.data.user.urole === "user") {
         // Save in localStorage

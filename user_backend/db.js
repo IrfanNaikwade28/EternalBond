@@ -4,7 +4,7 @@ const mysql = require("mysql");
 const db = mysql.createPool({
   host: "localhost",
   user: "root",          // Your DB username
-  password: "Dev@2004i", // Your DB password
+  password: "", // Your DB password
   database: "matrimony_db",   // Your DB name
   port: 3306
 });

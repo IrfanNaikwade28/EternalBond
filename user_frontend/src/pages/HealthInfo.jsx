@@ -18,7 +18,7 @@ const storedUser = localStorage.getItem("user");
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState("");
 
-  const API_URL = "http://localhost:5000/api/health";
+  const API_URL = `${import.meta.env.VITE_ADMIN_API_BASE_URL || "http://localhost:5000"}/api/health`;
 
   // ✅ Fetch existing data for selected user
 useEffect(() => {

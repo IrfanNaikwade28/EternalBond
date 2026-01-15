@@ -1,6 +1,7 @@
 // src/context/FilterModalContext.js
 import React, { createContext, useContext, useState } from "react";
 import axios from "axios";
+import { USER_API_BASE_URL } from "../lib/api";
 
 const FilterModalContext = createContext();
 
@@ -19,7 +20,7 @@ export const FilterModalProvider = ({ children }) => {
     // alert(JSON.stringify(filterValues))
     try {
       const response = await axios.post(
-        "http://localhost:5001/api/filter/profiles",
+        `${USER_API_BASE_URL}/api/filter/profiles`,
         filterValues
       );
 

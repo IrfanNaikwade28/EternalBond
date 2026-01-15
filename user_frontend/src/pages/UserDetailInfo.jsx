@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { adminApi } from "../lib/api";
 // import { useUser } from "../context/UserContext"; // Uncomment if you need setCtid
 
 const UserDetailInfo = () => {
@@ -33,9 +34,9 @@ const UserDetailInfo = () => {
     const fetchDropdowns = async () => {
       try {
         const [castRes, heightRes, marriageRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/cast"),
-          axios.get("http://localhost:5000/api/height/all"),
-          axios.get("http://localhost:5000/api/marriage/all"),
+          adminApi.get("/api/cast"),
+          adminApi.get("/api/height/all"),
+          adminApi.get("/api/marriage/all"),
         ]);
         setCasts(castRes.data);
         setHeights(heightRes.data);
@@ -53,7 +54,7 @@ const UserDetailInfo = () => {
 
     const fetchUserDetails = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/userdetails/${userId}`);
+        const res = await adminApi.get(`/api/userdetails/${userId}`);
         const data = res.data;
 
         if (data && data.UID) {
@@ -72,7 +73,7 @@ const UserDetailInfo = () => {
           });
 
           if (data.CTID) {
-            const subcastRes = await axios.get(`http://localhost:5000/api/cast/${data.CTID}/subcasts`);
+            const subcastRes = await adminApi.get(`/api/cast/${data.CTID}/subcasts`);
             setSubCasts(subcastRes.data);
           }
         }
@@ -90,7 +91,7 @@ const UserDetailInfo = () => {
 
     if (name === "txtcast") {
       try {
-        const subcastRes = await axios.get(`http://localhost:5000/api/cast/${value}/subcasts`);
+        const subcastRes = await adminApi.get(`/api/cast/${value}/subcasts`);
         setSubCasts(subcastRes.data);
         setFormData((prev) => ({ ...prev, txtscast: "" })); // Reset subcast
       } catch (err) {
@@ -122,7 +123,7 @@ const UserDetailInfo = () => {
     };
 
     try {
-      const res = await axios.put(`http://localhost:5000/api/userdetails/${userId}`, payload);
+      const res = await adminApi.put(`/api/userdetails/${userId}`, payload);
       setMessage(res.data.message || "✔user Details Updated successfully!");
       // setCtid(formData.txtcast); // Uncomment if needed from context
     } catch (err) {
